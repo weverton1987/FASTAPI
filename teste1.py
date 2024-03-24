@@ -4,6 +4,18 @@ from typing import Optional
 
 app = FastAPI()
 
-@app.get('/teste1/{id}')
-def main(id: int):
-    return {'valor': id*2}
+usuarios = [(1, 'caio', 'minhasenha1'), (2, 'joao', 'minhasenha2')]
+
+# @app.get('/usuario/{id}')
+# def main(id: int):
+#     for i in usuarios:
+#         if i[0] == id:
+#             return i
+#     return 'nao existe'
+
+@app.post('/usuario')
+def main(nome):
+    for i in usuarios:
+        if i[1] == nome:
+            return i
+    return 'nao existe'
